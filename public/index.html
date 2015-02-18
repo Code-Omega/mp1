@@ -2,17 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MP1 Starter</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Inky Petri Dish</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="author" content="Zehua Li">
+  <meta name="keyword" content="modeling">
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <div class="test"> My name is Anthony.</div>
+    <header>
+        <div id = "navibar", class = "large">
+            <div id = "naviitem", class = "itemlarge"> 
+                <div id = "section1", class = 'naviitem_content item1'>Welcome</div>
+                <div id = "section2", class = 'naviitem_content item2'>Contact</div>
+                <div id = "section3", class = 'naviitem_content item3'>About</div>
+                <div id = "section4", class = 'naviitem_content item4'>Sketches</div>
+            </div>
+        </div>
+        <div id = "naviline">
+            <div id = "navilineInd"></div>
+        </div>
+        <div id = 'naviball'> <div id = 'naviballburg'>&#9776;</div> </div>
+        <div id = "nav_padding"> 
+            <div id = "nav_padding_content">
+                <video width="100%" height="100%" autoplay loop>
+                    <source src="css/Rain_Drops.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id = "nav_padding_screen"> 
+                <div id = "nav_padding_screen_doodle"> Interactive Behaviour Modeling - Coming Soon 
+                    <br>
+                    <br> 
+                    <i class="fa fa-arrow-circle-o-down fa-3x"></i> 
+                </div>
+            </div>
+        </div>
+    </header> 
+    <div class="sections">    
+        <div class="sectionA"> </div>
+        <div id = "sketchSection", class="sectionC blueprint">
+            <div class="blueprint_doodle">
+            Try some rudementry sample sketches!
+            </div>
+            <div class="sketchlist">
+                <div class="sketch s1">
+                <iframe id='ifr' width=100% height=100% scrolling='no' 
+                    style='background: url(http://mcb419.processingtogether.com/static/img/jun09/pad/connectingbar.gif) no-repeat center 60px;' 
+                    src='http://mcb419.processingtogether.com/sp/pad/iframe/ro.BTC$kLLo474Ffq/rev.414?autostart=0'>
+                </iframe>
+                </div>
+                <div class="sketch s2">
+                    <iframe id='ifr' width=100% height=100% scrolling='no' 
+                            style='background: url(http://mcb419.processingtogether.com/static/img/jun09/pad/connectingbar.gif) no-repeat center 60px;' 
+                            src='http://mcb419.processingtogether.com/sp/pad/iframe/ro.BTcFdS$0zJ2pVg/rev.22?autostart=0'>
+                    </iframe>
+                </div>
+                <div class="sketch s3">
+                    <iframe id='ifr' width=100% height=100% scrolling='no' 
+                            style='background: url(http://mcb419.processingtogether.com/static/img/jun09/pad/connectingbar.gif) no-repeat center 60px;' 
+                            src='http://mcb419.processingtogether.com/sp/pad/iframe/ro.BaqwT1qrvL$0Wz/rev.216?autostart=0'>
+                    </iframe>
+                </div>
+                <div class="sketch s4">
+                </div>
+            </div>
+        </div>
+        <div id = "aboutSection", class="sectionB"> 
+            <canvas id = "canvas"></canvas>
+        </div>
+        <div id = "contactSection", class="sectionC">
+            <div class="column c1">
+            </div>
+            <div class="column c1">
+            </div>
+            <div class="column c1">
+            </div>
+            <div class="column c2">
+                <i class="fa fa-twitter fa-5x"></i>
+                <br><br><br><br>
+                Connect on Twitter (Soon)
+            </div>
+            <div class="column c2">
+                <i class="fa fa-github fa-5x"></i>
+                <br><br><br><br>
+                Connect on GitHub
+            </div>
+            <div class="column c2">
+                <i class="fa fa-linkedin fa-5x"></i>
+                <br><br><br><br>
+                Connect on LinkedIn
+            </div>
+        </div>  
+        <div class="sectionB"></div>
+        <div class="modal"><i class="fa fa-times-circle"></i><br>
+            <h1>You've reached the end of the webpage!</h1><br>
+            I hope you enjoyed what you've seen.<br>
+            Please consider checking back for further progress.<br>
+            <br>
+            Want to play with some more sketches? <br>
+            They can be found at http://sketchpad.cc.<br>
+            Powered by processing.js <br>
+            (not currently included in this website)
+        </div>
+    </div>
+    <div id = "inkdrop">
+    </div>  
+    <footer>
+        <div id = 'siteinfo'> ------- Inky Glass 2015 -------
+        </div>
+    </footer>
 
-
-  <script src="lib/jquery-2.1.3.min/index.js"></script>
-  <script src="js/script.js"></script>
-  <script src="http://localhost:35729/livereload.js"></script>
+    <script src="lib/jquery-2.1.3.min/index.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>
