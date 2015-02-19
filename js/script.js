@@ -1,6 +1,12 @@
+
+// This function deals with the navigation bar.
+// It is the first function written for this website, and is done in regular js.
 function navibarUtil() {
+    // mouse location for judging if the bar should be hidden.
     var mouseY = 0;
     document.addEventListener('mousemove', function(e){mouseY=e.clientY;});
+    
+    // morph the navigation bar on scroll.
     window.addEventListener('scroll', function (e) {
         var distanceY = window.pageYOffset || document.documentElement.scrollTop,
             navibarThresh = 60,
@@ -8,14 +14,17 @@ function navibarUtil() {
             ball = document.getElementById("naviball"),
             item = document.getElementById("naviitem");
         if ((distanceY > navibarThresh)) {
+            // shrinke
             if (header.className == "large") {
                 header.className = "small";
                 ball.className = "showball";
                 item.className = "itemsmall";
                 setTimeout(function () {
+                    // hide if user is not interacting with it
                     if (window.pageYOffset || document.documentElement.scrollTop > 60) {
                         if (mouseY > 51){header.className += " hide";}
                     }else{
+                        // user might have scrolled back to the top
                         header.className = "large"; 
                         ball.className = "";
                         item.className = "itemlarge";
@@ -23,6 +32,7 @@ function navibarUtil() {
                 },1000);
             }
         } else {
+            // reset the header so it can elegantly come down from the top when scrolled to the top of page
             if(header.className == "small hide") header.className = "reset";
             setTimeout(function(){
                     if (window.pageYOffset || document.documentElement.scrollTop <= navibarThresh){
@@ -36,10 +46,11 @@ function navibarUtil() {
 }
 window.onload = navibarUtil();
 
-
+// This portion contains all other functions (except the canvas ones) which are written in JQuery.
 $(document).ready(function(){
     $('.modal').hide();
     
+    // resizes key elements on resizing the window
     var everything_resize = function() {
         var windowWidth = $(window).width();
         var windowHeight = $(window).height();
@@ -61,7 +72,7 @@ $(document).ready(function(){
         everything_resize();
     });
     
-    /*console.log($(document).scrollTop());*/
+    // activate hidden navigation bar when cursor is in range
     $("#naviball, #navibar").on("mouseenter", 
         function(){if ($(document).scrollTop() >= 50){$("#navibar").attr('class',"small");}
     });
@@ -69,12 +80,12 @@ $(document).ready(function(){
         function(){if ($(document).scrollTop() >= 50){$("#navibar").addClass("hide");}
     });
     
+    
+    // carousel, auto scrolling, and position indication (carousel movement is controlled by scrolling)
     var rotation = 0,
         scrollstat = 0;
     $( window ).scroll(function() {
-        //if (scrollstat > $(document).scrollTop())
         {rotation += 120*Math.round(($(document).scrollTop()-scrollstat)/50);}
-        //else {rotation -= 120;}
         
         $(".sketchlist").css({
             "-webkit-transform": "rotateY("+rotation+"deg)",
@@ -82,9 +93,7 @@ $(document).ready(function(){
             "-o-transform": "rotateY("+rotation+"deg)",
             "transform": "rotateY("+rotation+"deg)"
         });
-        /*console.log("ds"+$(document).scrollTop());
-        console.log("sp"+$('#sketchSection').offset().top);
-        console.log("ap"+$('#aboutSection').offset().top);*/
+        // all the position indication conditions
         if ($(document).scrollTop() < $('#sketchSection').offset().top) 
             {$("#section1").css("font-size", "150%");
              $('#navilineInd').css({left:0+'%'});
@@ -106,71 +115,40 @@ $(document).ready(function(){
             {$("#inkdrop").attr('class',"inkdropped");}
         if (($(document).scrollTop() + $(window).height()) < $('#aboutSection').offset().top)
             {$("#inkdrop").attr('class',"");}
-        /*if (($(document).scrollTop() + 100) >= $('#aboutSection').offset().top && $(document).scrollTop() < $('#contactSection').offset().top) 
-            {$("#section3").css("font-size", "200%");}
-        if (($(document).scrollTop() + 100) < $('#aboutSection').offset().top || $(document).scrollTop() >= $('#contactSection').offset().top)
-            {$("#section3").css("font-size", "100%");}*/
         if ($(document).scrollTop() >= $('#contactSection').offset().top) 
             {$("#section2").css("font-size", "150%");
             $('#navilineInd').css({left:75+'%'});}
         if ($(document).scrollTop() < $('#contactSection').offset().top)
             {$("#section2").css("font-size", "100%");}
         
+        // shows modal when scrolled to the bottom
         if (($(document).scrollTop()-50 >= $('#contactSection').offset().top) && ($(document).scrollTop() > scrollstat))
             {$('.modal').show(200);}
         
+        // update scroll position
         scrollstat = $(document).scrollTop();
     });
     
+    // auto scrolling for navigation bar
     $("#section4").click(function() {$('html, body').animate({scrollTop: $("#sketchSection").offset().top+1}, 1000);});
     $("#section3").click(function() {$('html, body').animate({scrollTop: $("#aboutSection").offset().top+1}, 1000);});
     $("#section2").click(function() {$('html, body').animate({scrollTop: $("#contactSection").offset().top+1}, 1000);});
     $("#section1").click(function() {$('html, body').animate({scrollTop: 0}, 1000);});
+    // scrolling for the icon below the title
     $(".fa-arrow-circle-o-down").click(function() {$('html, body').animate({scrollTop: $("#sketchSection").offset().top+1}, 1000);});
     setInterval(function(){
         $(".fa").toggleClass('glow');
     }, 600);
-    
-    
-    /*$("#section3").click(function() {$('.modal').show(200);});
-    $("#aboutSection").click(function() {$('.modal').show(200);});*/
+    // icon for closing modal
     $(".fa-times-circle").click(function() {$('.modal').hide(200);});
-    
-    
+    // icon for social media interactions
     $('.fa-twitter').click(function(){window.open('https://www.twitter.com', '', '');});
     $('.fa-github').click(function(){window.open('https://github.com/Code-Omega', '', '');});
     $('.fa-linkedin').click(function(){window.open('https://www.linkedin.com/in/zehuali/en', '', '');});
-
-    /*$("#section4").click(function() {$('html, body').animate({scrollTop: $("#sketchSection").offset().top}, 2000);});*/
-    
-    /*$(".blueprint").on("mouseenter", function(){
-        if(window.mouseXPos < $(window).width()*0.3){
-               rotation = rotation - 60;
-                      $(".sketchlist").css({
-                            "-webkit-transform": "rotateY("+rotation+"deg)",
-                            "-moz-transform": "rotateY("+rotation+"deg)",
-                            "-o-transform": "rotateY("+rotation+"deg)",
-                            "transform": "rotateY("+rotation+"deg)"
-                        });
-        }
-        else if(window.mouseXPos > $(window).width()*0.7){
-                rotation = rotation + 60;
-                      $(".sketchlist").css({
-                            "-webkit-transform": "rotateY("+rotation+"deg)",
-                            "-moz-transform": "rotateY("+rotation+"deg)",
-                            "transform": "rotateY("+rotation+"deg)"
-                        });
-        }
-    });*/
-    /*$(".sketch").on("mouseleave", 
-        function(){{$(this).addClass("");}
-    });*/
-    
-    
-    
 });
 
-
+// this part deals with the canvas. I got addicited to it and wanted to do something. 
+// I tried to follow the structure of processing.js as it was clear, but some ordering had to be done in a less readable way.
 $(document).ready(function(){
     // animation setup
     window.requestAnimFrame = (function() {
@@ -193,14 +171,15 @@ $(document).ready(function(){
     // canvas setup
     var c = document.getElementById("canvas");
     var ctx = c.getContext("2d");
-    
     var W = canvas.width = $("#aboutSection").innerWidth();
     var H = canvas.height = $("#aboutSection").innerHeight();
     
+    // gaussian distribution
     function randomGaussian() {
         return ((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1));
     }
     
+    // Node "class"
     function Node(_type) {
         this.x = Math.random() * W;
         this.y = Math.random() * H;
@@ -237,6 +216,7 @@ $(document).ready(function(){
         }
     }
     
+    // preparation conditions (initializations)
     var Nnum = H*W/40000;
     var Nodes = [];
     for(var i = 0; i < Nnum; i++) {
@@ -267,6 +247,7 @@ $(document).ready(function(){
                 if (i != j) {
                     n1 = Nodes[j];
                     var distsq = Math.pow(n1.x-n.x,2)+Math.pow(n1.y-n.y,2);
+                    // updates energy with respect to the node's interactions
                     if (distsq<Math.pow(150,2)) {
                         ctx.beginPath();
                         ctx.strokeStyle = "rgba(255,255,255,"+ (1.0*Math.sqrt(distsq)/W) +")";
@@ -290,6 +271,7 @@ $(document).ready(function(){
                     }*/
                 }
             }
+            // display some texts to spice things up 
             if (concentraction > 15){
                 ctx.font = "10px Arial";
                 ctx.fillText(n.energy+", ("+n.x+" ,"+n.y+")",n.x,n.y);
@@ -320,6 +302,7 @@ $(document).ready(function(){
                 ctx.fillText("Forming Representation",n.x,n.y);
             }
         }
+        // this text is not dynamic
         ctx.fillStyle = "rgb(200,200,220)";
         ctx.strokeStyle="white";
         ctx.font = "60px Arial";
