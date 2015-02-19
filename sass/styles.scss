@@ -321,7 +321,7 @@ body{
     bottom:0;
     margin: auto;
     transition: transform 1s;
-    @mixin transform-style(preserve-3d);
+    @include transform-style(preserve-3d);
     @include transition(1s);
     z-index: 8;
     
