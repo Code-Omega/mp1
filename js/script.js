@@ -85,7 +85,7 @@ $(document).ready(function(){
     var rotation = 0,
         scrollstat = 0;
     $( window ).scroll(function() {
-        {rotation += 120*Math.round(($(document).scrollTop()-scrollstat)/50);}
+        {rotation += 120*Math.round(($(document).scrollTop()-scrollstat)/80);}
         
         $(".sketchlist").css({
             "-webkit-transform": "rotateY("+rotation+"deg)",
@@ -217,7 +217,7 @@ $(document).ready(function(){
     }
     
     // preparation conditions (initializations)
-    var Nnum = H*W/40000;
+    var Nnum = H*W/30000;
     var Nodes = [];
     for(var i = 0; i < Nnum; i++) {
         Nodes.push(new Node(0));
@@ -272,12 +272,12 @@ $(document).ready(function(){
                 }
             }
             // display some texts to spice things up 
-            if (concentraction > 10){
+            if (concentraction > 6){
                 ctx.font = "10px Arial";
                 ctx.fillText(n.energy+", ("+n.x+" ,"+n.y+")",n.x,n.y);
                 dataNum+=1;
             }
-            else if (concentraction > 3 && dataNum < 100){
+            else if (concentraction > 2 && dataNum < 100){
                 ctx.font = "10px Arial";
                 ctx.fillText(n.energy,n.x,n.y);
                 dataNum+=1;
