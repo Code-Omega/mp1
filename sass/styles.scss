@@ -13,6 +13,12 @@
             animation: $detail;
 }
 
+@mixin transition($detail){
+    -webkit-transition: $detail;
+       -moz-transition: $detail;
+        -ms-transition: $detail;
+            transition: $detail;
+}
 
 
 body{
@@ -31,8 +37,6 @@ body{
     text-align: center; 
     color: #DB5E5E;
     @include animation(colorize 2s cubic-bezier(0, 0, .78, .36) 1);
-    /*-webkit-animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
-    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;*/
 }
 .sectionA{
     z-index: 2;
@@ -178,8 +182,9 @@ body{
     text-align: right; 
     font-size: 200%;
     color: #6C868F;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    @include transition(0.5s);
+    /*-webkit-transition: 0.5s;
+    transition: 0.5s;*/
 }
 #naviballburg { position: absolute; bottom: 12px; right: 15px; }
 #naviball:hover {color: #0F1314}
@@ -190,8 +195,7 @@ body{
     z-index: 6;
     width: 100%; 
     height: 100%;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    @include transition(0.5s);
 }
 .itemlarge{font-size: 200%; top: 50px;}
 .itemsmall{font-size: 150%; top: 5px;}
@@ -220,8 +224,7 @@ body{
     width:25%;
     height:3px;
     background-color: rgba(219,94,94,0.8);
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    @include transition(0.5s);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -259,7 +262,6 @@ body{
     background-size:cover;
     background-attachment: fixed;
     background-color: #323E42;
-    
     position: fixed;
     top:0;
     z-index: -1;
@@ -301,7 +303,7 @@ body{
     transform-style: preserve-3d;
     transition: transform 1s;
     -webkit-transform-style: preserve-3d;
-    -webkit-transition: 1s;
+    @include transition(1s);
     z-index: 8;
     
     margin: 0 auto;
@@ -355,8 +357,7 @@ body{
 }
 
 .fa{
-    transition: transform 1s;
-    -webkit-transition: 1s;
+    @include transition(1s);
 }
 
 /*---------------------------------------------------------------------------*/
