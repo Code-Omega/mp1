@@ -27,6 +27,13 @@
             transform: $detail;
 }
 
+@mixin perspective($detail){
+    -webkit-perspective: $detail;
+       -moz-perspective: $detail;
+        -ms-perspective: $detail;
+            perspective: $detail;
+}
+
 body{
     width: 100%; 
     height: 100%;
@@ -42,7 +49,7 @@ body{
     background-color: transparent;
     text-align: center; 
     color: #DB5E5E;
-    @include animation(colorize 2s cubic-bezier(0, 0, .78, .36) 1);
+    @include animation(colorize 2s cubic-bezier(0, 0, .80, .4) 1);
 }
 .sectionA{
     z-index: 2;
@@ -165,14 +172,13 @@ body{
 .small li{ margin-top: 17px;}
 
 .hide{ 
-    //-webkit-transform:translateX(-100%); 
     background-color: #323E42;
     -webkit-transition: min-height 0.5s, -webkit-transform 0.5s, background-color 0.5s;
     transition: min-height 0.5s, transform 0.5s, background-color 0.5s;
     @include transform(translate3d(-100%,0,260px));
 }
 .reset{ 
-    -webkit-transform:translate3d(0, -8em,0);
+    @include transform(translate3d(0, -8em,0));
     height: 0; 
     background-color: transparent; 
     color: transparent;
@@ -250,8 +256,7 @@ body{
     border-radius: 4px;
     z-index: -99;
     @include transform(translateZ(250px));
-    //-webkit-transform: translateZ(250px);
-    -webkit-perspective: 10000px;
+    @include perspective(10000px);
 }
 
 .blueprint_doodle{
@@ -322,7 +327,7 @@ body{
     width: 500px;
     height: 500px;
     position: relative;
-    -webkit-perspective: 0px;
+    @include perspective(0px);
 }
 
 .sketch{
@@ -405,13 +410,12 @@ body{
 /*---------------------------------------------------------------------------*/
 
 img {
-    -webkit-animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
-    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+    @include animation(colorize 2s cubic-bezier(0, 0, .80, .4) 1);
     background: transparent;
-    border: 10px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+    border: 10px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
     display: block;
-    margin: 1.3em auto;
+    margin: 1.2em auto;
     max-width: 95%;
 }
 
