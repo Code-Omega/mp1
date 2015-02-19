@@ -85,6 +85,7 @@ $(document).ready(function(){
     var rotation = 0,
         scrollstat = 0;
     $( window ).scroll(function() {
+        if (scrollstat < $('#sketchSection').offset().top)
         {rotation += 120*Math.round(($(document).scrollTop()-scrollstat)/80);}
         
         $(".sketchlist").css({
@@ -206,7 +207,7 @@ $(document).ready(function(){
             this.speed = (285-this.energy)/20;
             this.x += this.speed*Math.cos(this.direction);
             this.y += this.speed*Math.sin(this.direction);
-            this.energy = this.energy - 8 < 0 ? 0 : this.energy - 8;
+            this.energy = this.energy - 6 < 0 ? 0 : this.energy - 6;
         }
         this.wrap = function() {
             if(this.x - this.radius > W) this.x = 0-this.radius;
@@ -256,7 +257,7 @@ $(document).ready(function(){
                         ctx.stroke();
                         ctx.closePath();
                         //Math.round(Math.sqrt(distsq))
-                        var incrementation = Math.round((150-Math.sqrt(distsq))/30);
+                        var incrementation = Math.round((150-Math.sqrt(distsq))/40);
                         n.energy = (n.energy + incrementation) > 230 ? 230 : n.energy+incrementation;
                         concentraction += 1;
                     }
