@@ -272,12 +272,12 @@ $(document).ready(function(){
                 }
             }
             // display some texts to spice things up 
-            if (concentraction > 15){
+            if (concentraction > 10){
                 ctx.font = "10px Arial";
                 ctx.fillText(n.energy+", ("+n.x+" ,"+n.y+")",n.x,n.y);
                 dataNum+=1;
             }
-            else if (concentraction > 5 && dataNum < 100){
+            else if (concentraction > 3 && dataNum < 100){
                 ctx.font = "10px Arial";
                 ctx.fillText(n.energy,n.x,n.y);
                 dataNum+=1;
