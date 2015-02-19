@@ -139,7 +139,6 @@ body{
     z-index: 5;
     width: 100%; 
     font-family: 'Bilbo Swash Caps', cursive;
-    @include transform(translateZ(260px));
 }
 
 .large{ 
@@ -149,6 +148,7 @@ body{
     border-right: 3px solid transparent;
     -webkit-transition: min-height 0.5s, -webkit-transform 0.5s, background-color 0.5s;
     transition: min-height 0.5s, transform 0.5s, background-color 0.5s;
+    @include transform(translateZ(260px));
 }
 .large li{ margin-top: 45px; }
 
@@ -160,14 +160,16 @@ body{
     border-right: 3px solid #6C868F;
     -webkit-transition: min-height 0.5s, -webkit-transform 0.5s, background-color 0.5s;
     transition: min-height 0.5s, transform 0.5s, background-color 0.5s;
+    @include transform(translateZ(260px));
 }
 .small li{ margin-top: 17px;}
 
 .hide{ 
-    -webkit-transform:translateX(-100%); 
+    //-webkit-transform:translateX(-100%); 
     background-color: #323E42;
     -webkit-transition: min-height 0.5s, -webkit-transform 0.5s, background-color 0.5s;
     transition: min-height 0.5s, transform 0.5s, background-color 0.5s;
+    @include transform(translate3d(-100%,0,260px));
 }
 .reset{ 
     -webkit-transform:translate3d(0, -8em,0);
@@ -190,13 +192,13 @@ body{
     font-size: 200%;
     color: #6C868F;
     @include transition(0.5s);
-    @include transform(translateZ(260px));
+    //@include transform(translateZ(260px));
     /*-webkit-transition: 0.5s;
     transition: 0.5s;*/
 }
 #naviballburg { position: absolute; bottom: 12px; right: 15px; }
 #naviball:hover {color: #0F1314}
-.showball{ -webkit-transform:translate3d(46px, 46px,0); background-color: #323E42;}
+.showball{ -webkit-transform:translate3d(46px, 46px,260px); background-color: #323E42;}
 
 #naviitem{
     position: relative;
