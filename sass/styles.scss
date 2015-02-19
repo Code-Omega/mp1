@@ -20,6 +20,12 @@
             transition: $detail;
 }
 
+@mixin transform($detail){
+    -webkit-transform: $detail;
+       -moz-transform: $detail;
+        -ms-transform: $detail;
+            transform: $detail;
+}
 
 body{
     width: 100%; 
@@ -238,7 +244,8 @@ body{
     border-bottom:10px solid rgba(0, 0, 0, 0.42);
     border-radius: 4px;
     z-index: -99;
-    -webkit-transform: translateZ(250px);
+    @include transform(translateZ(250px));
+    //-webkit-transform: translateZ(250px);
     -webkit-perspective: 10000px;
 }
 
@@ -325,19 +332,22 @@ body{
 }
 
 .s1{
-    -webkit-transform: rotateY(0deg) translateZ(250px);
-    transform: rotateY(0deg) translateZ(250px);
+    /*-webkit-transform: rotateY(0deg) translateZ(250px);
+    transform: rotateY(0deg) translateZ(250px);*/
+    @include transform(rotateY(0deg) translateZ(250px));
 }
 .s2{
-    -webkit-transform: rotateY(120deg) translateZ(250px);
-    transform: rotateY(120deg) translateZ(250px);
+    /*-webkit-transform: rotateY(120deg) translateZ(250px);
+    transform: rotateY(120deg) translateZ(250px);*/
+    @include transform(rotateY(120deg) translateZ(250px));
 }
 .s3{
-    -webkit-transform: rotateY(240deg) translateZ(250px);
-    transform: rotateY(240deg) translateZ(250px);
+    /*-webkit-transform: rotateY(240deg) translateZ(250px);
+    transform: rotateY(240deg) translateZ(250px);*/
+    @include transform(rotateY(240deg) translateZ(250px));
 }
 .s4{
-    -webkit-transform: rotateY(20deg) translateZ(2500px);
+    @include transform(rotateY(20deg) translateZ(2px));
 }
     
 /*---------------------------------------------------------------------------*/
@@ -375,7 +385,7 @@ body{
     text-align: center;
     opacity: 0.9;
     background-image: -webkit-linear-gradient(top, rgba(50,62,66,1) 0%,rgba(50,62,66,1) 70%,rgba(0,0,0,0) 100%);
-    -webkit-transform: translateZ(250px);
+    @include transform(translateZ(250px));
     border: 10px solid rgba(0, 0, 0, 0.62);
     border-radius: 10px;
     color: #BFBFCF;
