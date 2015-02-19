@@ -218,7 +218,7 @@ $(document).ready(function(){
     }
     
     // preparation conditions (initializations)
-    var Nnum = H*W/30000;
+    var Nnum = H*W/25000;
     var Nodes = [];
     for(var i = 0; i < Nnum; i++) {
         Nodes.push(new Node(0));
