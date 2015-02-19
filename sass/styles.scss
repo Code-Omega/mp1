@@ -30,7 +30,7 @@ body{
     background-color: transparent;
     text-align: center; 
     color: #DB5E5E;
-    @include border-radius(colorize 2s cubic-bezier(0, 0, .78, .36) 1);
+    @include animation(colorize 2s cubic-bezier(0, 0, .78, .36) 1);
     /*-webkit-animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
     animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;*/
 }
